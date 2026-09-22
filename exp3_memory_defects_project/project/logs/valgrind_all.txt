@@ -1,0 +1,136 @@
+##### VALGRIND: 1_uninit_buggy #####
+==561== Memcheck, a memory error detector
+==561== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==561== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==561== Command: ./bin/1_uninit_buggy_vg
+==561== 
+==561== Conditional jump or move depends on uninitialised value(s)
+==561==    at 0x109155: decide (1_uninit_buggy.c:14)
+==561==    by 0x10917C: main (1_uninit_buggy.c:23)
+==561==  Uninitialised value was created by a stack allocation
+==561==    at 0x109149: decide (1_uninit_buggy.c:10)
+==561== 
+Outcome = 0
+==561== 
+==561== HEAP SUMMARY:
+==561==     in use at exit: 0 bytes in 0 blocks
+==561==   total heap usage: 1 allocs, 1 frees, 4,096 bytes allocated
+==561== 
+==561== All heap blocks were freed -- no leaks are possible
+==561== 
+==561== For lists of detected and suppressed errors, rerun with: -s
+==561== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+
+##### VALGRIND: 1_uninit_fixed #####
+==562== Memcheck, a memory error detector
+==562== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==562== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==562== Command: ./bin/1_uninit_fixed_vg
+==562== 
+Outcome = 0
+==562== 
+==562== HEAP SUMMARY:
+==562==     in use at exit: 0 bytes in 0 blocks
+==562==   total heap usage: 1 allocs, 1 frees, 4,096 bytes allocated
+==562== 
+==562== All heap blocks were freed -- no leaks are possible
+==562== 
+==562== For lists of detected and suppressed errors, rerun with: -s
+==562== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+
+##### VALGRIND: 2_leak_buggy #####
+==563== Memcheck, a memory error detector
+==563== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==563== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==563== Command: ./bin/2_leak_buggy_vg
+==563== 
+Buffer 0 first element = 0
+Buffer 1 first element = 100
+Buffer 2 first element = 200
+Buffer 3 first element = 300
+Buffer 4 first element = 400
+==563== 
+==563== HEAP SUMMARY:
+==563==     in use at exit: 2,000 bytes in 5 blocks
+==563==   total heap usage: 6 allocs, 1 frees, 6,096 bytes allocated
+==563== 
+==563== 2,000 bytes in 5 blocks are definitely lost in loss record 1 of 1
+==563==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==563==    by 0x1091B7: build_buffers (2_leak_buggy.c:12)
+==563==    by 0x109268: main (2_leak_buggy.c:26)
+==563== 
+==563== LEAK SUMMARY:
+==563==    definitely lost: 2,000 bytes in 5 blocks
+==563==    indirectly lost: 0 bytes in 0 blocks
+==563==      possibly lost: 0 bytes in 0 blocks
+==563==    still reachable: 0 bytes in 0 blocks
+==563==         suppressed: 0 bytes in 0 blocks
+==563== 
+==563== For lists of detected and suppressed errors, rerun with: -s
+==563== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+
+##### VALGRIND: 2_leak_fixed #####
+==564== Memcheck, a memory error detector
+==564== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==564== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==564== Command: ./bin/2_leak_fixed_vg
+==564== 
+Buffer 0 first element = 0
+Buffer 1 first element = 100
+Buffer 2 first element = 200
+Buffer 3 first element = 300
+Buffer 4 first element = 400
+==564== 
+==564== HEAP SUMMARY:
+==564==     in use at exit: 0 bytes in 0 blocks
+==564==   total heap usage: 6 allocs, 6 frees, 6,096 bytes allocated
+==564== 
+==564== All heap blocks were freed -- no leaks are possible
+==564== 
+==564== For lists of detected and suppressed errors, rerun with: -s
+==564== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+
+##### VALGRIND: 3_doublefree_buggy #####
+==565== Memcheck, a memory error detector
+==565== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==565== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==565== Command: ./bin/3_doublefree_buggy_vg
+==565== 
+==565== Invalid free() / delete / delete[] / realloc()
+==565==    at 0x484988F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==565==    by 0x109236: main (3_doublefree_buggy.c:22)
+==565==  Address 0x4a7d040 is 0 bytes inside a block of size 32 free'd
+==565==    at 0x484988F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==565==    by 0x10922A: main (3_doublefree_buggy.c:20)
+==565==  Block was alloc'd at
+==565==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==565==    by 0x1091BE: main (3_doublefree_buggy.c:12)
+==565== 
+hello valgrind
+==565== 
+==565== HEAP SUMMARY:
+==565==     in use at exit: 0 bytes in 0 blocks
+==565==   total heap usage: 2 allocs, 3 frees, 4,128 bytes allocated
+==565== 
+==565== All heap blocks were freed -- no leaks are possible
+==565== 
+==565== For lists of detected and suppressed errors, rerun with: -s
+==565== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+
+##### VALGRIND: 3_doublefree_fixed #####
+==566== Memcheck, a memory error detector
+==566== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==566== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==566== Command: ./bin/3_doublefree_fixed_vg
+==566== 
+hello valgrind
+==566== 
+==566== HEAP SUMMARY:
+==566==     in use at exit: 0 bytes in 0 blocks
+==566==   total heap usage: 2 allocs, 2 frees, 4,128 bytes allocated
+==566== 
+==566== All heap blocks were freed -- no leaks are possible
+==566== 
+==566== For lists of detected and suppressed errors, rerun with: -s
+==566== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+

@@ -1,0 +1,11 @@
+$ cppcheck --enable=all --inconclusive --std=c11 refactored/clean_code.c
+
+>>> REPLACE THIS BLOCK with the real console output from running the
+>>> command above on your own machine (see README.md, Step 2).
+>>>
+>>> Expected result: cppcheck should report zero errors/warnings of the
+>>> kind seen in cppcheck_before.txt (no strcpy/gets/sprintf misuse, no
+>>> unchecked malloc/fopen/scanf, no unreachable code, no unused variable).
+>>> You may still see 0 or a small number of purely informational/style
+>>> notes; that is fine — the important comparison is that every WARNING/
+>>> ERROR class listed in Section 6.3 of the report is gone.

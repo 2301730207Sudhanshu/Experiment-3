@@ -1,0 +1,21 @@
+$ cppcheck --enable=all --inconclusive --std=c11 original/dirty_code.c
+
+>>> REPLACE THIS BLOCK with the real console output from running the
+>>> command above on your own machine (see README.md, Step 2).
+>>>
+>>> Typical warnings cppcheck reports for this file (for reference only —
+>>> your exact line numbers/wording may differ slightly by cppcheck version):
+>>>
+>>>  [dirty_code.c:22]: (error) Dangerous usage of 'strcpy' - buffer overflow risk
+>>>  [dirty_code.c:30]: (error) Obsolete function 'gets' called. It is recommended
+>>>      to use 'fgets' instead
+>>>  [dirty_code.c:55]: (style) Statements following return, break, continue,
+>>>      goto or throw will never be executed
+>>>  [dirty_code.c:58]: (style) Unused variable: unused_flag
+>>>  [dirty_code.c:64]: (warning) sprintf() can overflow if used without a
+>>>      length limit
+>>>  [dirty_code.c:71]: (warning) Possible null pointer dereference: fp
+>>>      (fopen return value not checked)
+>>>  [dirty_code.c:79]: (warning) Possible null pointer dereference: data
+>>>      (malloc return value not checked)
+>>>  [dirty_code.c:89]: (checkersReport) scanf() return value not checked
